@@ -45,7 +45,6 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', function ($scope, 
 
 			Foods.total().success(function (data) {
 				$scope.total = data.total;
-				console.log($scope.total);
 			});			
 		})
 	}

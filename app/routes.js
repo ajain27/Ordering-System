@@ -60,7 +60,8 @@ function getOrderTotal(res) {
             res.send(err);
         }
         var total = orders.reduce(function (total, order) {
-            return total + order.price;
+            total += order.price + (0.075 * order.price);
+            return total;
         }, 0);
         res.json({total:total}); // return all orders in JSON format
     });
