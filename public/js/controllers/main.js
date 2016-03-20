@@ -19,7 +19,7 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 
 	$scope.addFood = function () {
 		if($scope.formData.name != undefined && $scope.formData.price != undefined && $scope.formData.description != undefined) {
-			Foods.create($scope.formData).then(function (data) {
+			Foods.create($scope.formData).then(function ( data ) {
 			$scope.foods = data;
 			$scope.formData = {};
 		}).catch(function (err) {
@@ -27,28 +27,33 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 		});	
 	}
 	
-		Foods.get().success(function(data) {
+		Foods.get().success( function ( data ) {
 			$scope.foods = data;
 			})		
 	};
 
-		$scope.showFoodDetails = function(food) {
+		$scope.showFoodDetails = function ( food ) {
 			var id = food._id;
+			console.log(id);
 			// Foods.getItem(id);			
 			$scope.yourFood = food;
 		}
 
 		$scope.deleteFood = function (id) {
-			Foods.delete(id).success(function(data) {
-				$scope.food = data;
+			Foods.delete(id).success( function ( data ) {
+				$scope.orderedFood = data;
 			})
 			// Foods.get().success(function(data) {
 			// $scope.delOrder = data;
 			// })
 		}
 
-		$scope.addOrder = function (argument) {
-			console.log('You Ordered')
+		$scope.addOrder = function ( food ) {
+			var id = food._id;
+			console.log(id);
+			// Foods.getItem(id);			
+			// $scope.yourFood = food;
+
 		}
 
 		$scope.yourOrder = function (data) {

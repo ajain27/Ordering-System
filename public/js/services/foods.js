@@ -15,9 +15,9 @@ angular.module('foodService', [])
 			},
 			total : function() {
 				return $http.get('/api/total');
-			},
-			getItem : function(id) {
-				return $http.get('/api/foods/' + id);
 			}
+			// getItem : function(id) {
+			// 	return $http.get('/api/foods/' + id);
+			// }
 		}
 	}]);

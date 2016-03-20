@@ -68,12 +68,12 @@
 			</table>
 			<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
 			<!-- <span us-spinner spinner-key="spinner-1"></span>						 -->
-				<button class="btn btn-primary pull-right order" ng-show="yourFood" ng-click="addOrder()">Order</button>
+				<button class="btn btn-primary pull-right order" ng-show="yourFood" ng-click="addOrder(yourFood)">Order</button>
 			</div>
 			<div class="col-md-4 panel panel-default pull-right orderItems" style="border:none" ng-cloak>
 				<h3 style="color: #428bca; text-align: center">Your Order</h3>
 					<table class="table table-striped">
-						<tr ng-repeat="order in delOrder"><td>{{order.name}}</td><td style="text-align: right">{{yourOrder.price}}</td><td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteFood(food._id)"></td></tr>
+						<tr ng-repeat="order in orderedFood"><td>{{order.name}}</td><td style="text-align: right">{{yourOrder.price}}</td><td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteFood(food._id)"></td></tr>
 					</table><hr>
 					<table class="table table-striped" ng-show="order">
 						<tr><td>Your Total</td><td>$30</td></tr>
