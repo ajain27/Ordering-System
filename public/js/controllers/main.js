@@ -1,21 +1,14 @@
 'use strict'
 var fooditems = angular.module('foodController', []);
 
-fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService', function ($scope, $http, Foods, usSpinnerService) {
+fooditems.controller('FoodData', ['$scope', '$http', 'Foods', function ($scope, $http, Foods) {
 		$scope.formData = {};
 
 		Foods.get().success(function(data) {
 			$scope.foods = data;
 			}). error (function(err) {
 				console.log(err);	
-			})	
-
-		$scope.startSpin = function(){
-        usSpinnerService.spin('spinner-1');
-   		 }
-	    $scope.stopSpin = function(){
-	        usSpinnerService.stop('spinner-1');
-	    }
+			})
 
 	$scope.addFood = function () {
 		if($scope.formData.name != undefined && $scope.formData.price != undefined && $scope.formData.description != undefined) {
@@ -49,20 +42,12 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 			}
 			Foods.order(order).then(function (result) {
 			$scope.orderedFood = result.data;
-			console.log( $scope.orderedFood );
+
+			Foods.total().success(function (data) {
+				$scope.total = data.total;
+				console.log($scope.total);
+			});			
 		})
 	}
-
-		$scope.yourtotal = function (data) {
-			var total = 0;
-			Foods.total().success(function (data) {
-				$scope.total = data;
-				console.log($scope.total);
-				// angular.forEach($scope.total.price, function(order){
-				// 	total += order.price;
-				// 	console.log(total);
-				// });
-			});
-		};
 	
 }]);

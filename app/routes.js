@@ -53,6 +53,20 @@ function getOrders(res) {
     });
 };
 
+function getOrderTotal(res) {
+ Order.find(function (err, orders) {
+
+        if (err) {
+            res.send(err);
+        }
+        var total = orders.reduce(function (total, order) {
+            return total + order.price;
+        }, 0);
+        res.json({total:total}); // return all orders in JSON format
+    });
+}
+
+
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
@@ -63,7 +77,7 @@ module.exports = function (app) {
     });
 
     app.get('/api/total', function (req, res) {
-        getOrders(res);
+        getOrderTotal(res);
     });
 
     
@@ -94,7 +108,6 @@ module.exports = function (app) {
             food: req.body.food._id,
             price: req.body.price
         }, function (err, food) {
-            console.log(err);
             if (err)
                 res.send(err);
 

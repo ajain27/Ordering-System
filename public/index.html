@@ -48,7 +48,7 @@
 		  </div>
   			<button type="submit" class="btn btn-default addFood" data-ng-click="addFood()">Add</button>
 		  <div class="form-group pull-right" style="margin-right: 5px;">
-		    <input type="text" class="form-control" data-ng-model="searchFood" id="Descripton" placeholder="Search what you like !">
+		    <input type="text" class="form-control" data-ng-model="searchFood.name" id="Descripton" placeholder="Search what you like !">
 		  </div>  			
 		</form>
 		<div style="margin:10px;">
@@ -78,14 +78,13 @@
 					<table class="table table-striped">
 						<tr data-ng-repeat="order in orderedFood"><td>{{order.food.name}}</td>
 						<td style="text-align: right">{{order.price | currency}}</td>
-						<td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteOrder(order.food._id)"></td></tr>
+						<!-- <td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteOrder(order.food._id)"></td></tr> -->
 					</table><hr>
 					<table class="table table-striped" ng-show="orderedFood">
-						<tr ng-show="orderedFood"><td>Your Total</td><td>$30</td></tr>
+						<tr ng-show="orderedFood"><td>Your Total</td><td style="text-align: right">{{total}}</td></tr>
 					</table>	
 				</div>
 		</div>
-		<button ng-click="yourtotal()">Total</button>
 		</div>
 		</div>
 		<div class="text-center text-muted">
