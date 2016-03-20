@@ -62,6 +62,11 @@ module.exports = function (app) {
         getFoods(res);
     });
 
+    app.get('/api/total', function (req, res) {
+        getOrders(res);
+    });
+
+    
     // create food and send back all foods after creation
     app.post('/api/foods', function (req, res) {
 
@@ -99,14 +104,14 @@ module.exports = function (app) {
 
     });
 
-    app.get('/api/foods/:food_id', function (req, res) {
-        Food.get({
-            _id: req.params.food_id
-        }, function (err, food) {
-            if(err)
-                res.send(err);
-        })
-    })
+    // app.get('/api/foods/:food_id', function (req, res) {
+    //     Food.get({
+    //         _id: req.params.food_id
+    //     }, function (err, food) {
+    //         if(err)
+    //             res.send(err);
+    //     })
+    // })
 
     // delete a food
     app.delete('/api/foods/:food_id', function (req, res) {

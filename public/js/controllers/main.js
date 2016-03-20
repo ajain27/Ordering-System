@@ -25,24 +25,18 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 		}).catch(function (err) {
 			console.log(err);
 		});	
-	}
-	
-		// Foods.get().success( function ( data ) {
-		// 	$scope.foods = data;
-		// 	})		
-	};
+	}	
+};
 
 		$scope.showFoodDetails = function ( food ) {
 			var id = food._id;
 			console.log(id);
-			// Foods.getItem(id);			
 			$scope.yourFood = food;
 		}
 
 		$scope.deleteFood = function (id) {
 			Foods.delete(id).success( function ( data ) {
 				$scope.deleteFoodItem = data;
-				console.log($scope.deleteFoodItem);
 				Foods.get().success( function ( data ) {
 				$scope.foods = data;
 				});
@@ -56,13 +50,19 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 			Foods.order(order).then(function (result) {
 			$scope.orderedFood = result.data;
 			console.log( $scope.orderedFood );
-
 		})
+	}
 
-		}
-
-		$scope.yourOrder = function (data) {
-			$scope.yourOrder = data;
-		}
+		$scope.yourtotal = function (data) {
+			var total = 0;
+			Foods.total().success(function (data) {
+				$scope.total = data;
+				console.log($scope.total);
+				// angular.forEach($scope.total.price, function(order){
+				// 	total += order.price;
+				// 	console.log(total);
+				// });
+			});
+		};
 	
 }]);
