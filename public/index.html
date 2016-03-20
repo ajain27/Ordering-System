@@ -1,0 +1,99 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="FoodOrder">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>MEAN-FOOD</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<!-- SET THE CONTROLLER -->
+<body>
+<h1 style="text-align: center">Food Corner</h1>
+		<nav class="navbar navbar-inverse">
+  			<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img src="./images/thai.jpg" style="height: 30px; width: 30px;"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+		</nav>
+		<!-- MENU LIST -->
+		<div id="food-list" class="row" style="margin: 20px;" data-ng-controller="FoodData" ng-cloak>
+		<div class="panel panel-default row" style="background: #F5F5F5; margin: 10px;">
+		<form class="form-inline" style="margin: 5px;" data-ng-model="formData">
+		  <div class="form-group">
+		    <input type="text" class="form-control" data-ng-model="formData.name" id="foodItem" placeholder="Food Item" required>
+		  </div>
+		  <div class="form-group">
+		    <input type="text" class="form-control" data-ng-model="formData.price" id="price" placeholder="Price" required>
+		  </div>
+		  <div class="form-group">
+		    <input type="text" class="form-control" data-ng-model="formData.description" id="Descripton" placeholder="Description" required>
+		  </div>
+  			<button type="submit" class="btn btn-default addFood" data-ng-click="addFood()">Add</button>
+		</form>
+		<div style="margin:10px;">
+				<div class="col-md-4 panel panel-default items" ng-cloak>
+				<h3 style="color: #428bca; text-align: center">Menu Items</h3>
+				<table class="table table-striped">
+					<tr data-ng-repeat = "food in foods track by $index">
+					<td>{{ food.name }}</td>
+					<td> ${{ food.price }}</td>
+					<td><button class="btn btn-default pull-right" ng-click="showFoodDetails(food)">Get Details</button></td>
+					<td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteFood(food._id)"></td>
+				</table>
+			</div>
+			<div class="col-md-4 panel panel-default" style="height: 400px; border:none" ng-cloak>
+			<table>
+				<tr><h3 ng-show="yourFood" style="color: #428bca; text-align: center">{{yourFood.name}}</h3></tr>
+				   <tr><td colspan="2"></td>
+				   <td class="food-details">{{ yourFood.description }}</td>						
+				</tr>
+			</table>
+			<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+			<!-- <span us-spinner spinner-key="spinner-1"></span>						 -->
+				<button class="btn btn-primary pull-right order" ng-show="yourFood" ng-click="addOrder()">Order</button>
+			</div>
+			<div class="col-md-4 panel panel-default pull-right orderItems" style="border:none" ng-cloak>
+				<h3 style="color: #428bca; text-align: center">Your Order</h3>
+					<table class="table table-striped">
+						<tr ng-repeat="order in delOrder"><td>{{order.name}}</td><td style="text-align: right">{{yourOrder.price}}</td><td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteFood(food._id)"></td></tr>
+					</table><hr>
+					<table class="table table-striped" ng-show="order">
+						<tr><td>Your Total</td><td>$30</td></tr>
+					</table>
+				</div>
+		</div>
+	
+		</div>
+		</div>
+		<div class="text-center text-muted">
+			<p>A demo by <a href="http://github.com/ajain27">Ankit</a></p>
+		</div>
+
+</body>	
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/foods.js"></script> <!-- load our food service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+	<script src="js/spin.js"></script>
+	<script src="js/spinner.js"></script>
+
+</html>
