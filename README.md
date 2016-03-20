@@ -28,8 +28,5 @@ Each branch represents a certain tutorial.
 - tut6-organization: Coming Soon
 
 Happy Ordering ! :)
-
-![Todo-aholic](http://i.imgur.com/ikyqgrn.png)
 =======
 # Ordering-System
->>>>>>> c81f85f1312a965340f4cfffd0ac3f6b933e73ef
