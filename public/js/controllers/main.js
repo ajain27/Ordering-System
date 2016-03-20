@@ -41,8 +41,12 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 
 		$scope.deleteFood = function (id) {
 			Foods.delete(id).success( function ( data ) {
-				$scope.orderedFood = data;
-			})
+				$scope.deleteFoodItem = data;
+				console.log($scope.deleteFoodItem);
+				Foods.get().success( function ( data ) {
+				$scope.foods = data;
+				});
+			});
 			// Foods.get().success(function(data) {
 			// $scope.delOrder = data;
 			// })
@@ -50,9 +54,8 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 
 		$scope.addOrder = function ( food ) {
 			var id = food._id;
-			console.log(id);
-			// Foods.getItem(id);			
-			// $scope.yourFood = food;
+			$scope.orderedFood = food;
+			console.log( $scope.orderedFood );
 
 		}
 
