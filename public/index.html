@@ -71,15 +71,15 @@
 				<button class="btn btn-primary pull-right order" ng-show="yourFood" ng-click="addOrder(yourFood)">Order</button>
 			</div>
 			<div class="col-md-4 panel panel-default pull-right orderItems" style="border:none" ng-cloak>
-				<h3 style="color: #428bca; text-align: center">Your Order</h3>
+				<h3 style="color: #428bca; text-align: center" ng-show="orderedFood">Your Order</h3>
 					<table class="table table-striped">
-						<tr ng-model="orderedFood" ng-repeat="order in orderedFood"><td>{{order.name}}</td>
+						<tr data-ng-repeat="order in orderedFood"><td>{{order.food.name}}</td>
 						<td style="text-align: right">${{order.price}}</td>
-						<!-- <td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteFood(food)"></td></tr> -->
+						<td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteOrder(order.food._id)"></td></tr>
 					</table><hr>
-					<table class="table table-striped" ng-show="order">
-						<tr><td>Your Total</td><td>$30</td></tr>
-					</table>
+					<table class="table table-striped" ng-show="orderedFood">
+						<tr ng-show="orderedFood"><td>Your Total</td><td>$30</td></tr>
+					</table>	
 				</div>
 		</div>
 	

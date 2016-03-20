@@ -19,7 +19,7 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 
 	$scope.addFood = function () {
 		if($scope.formData.name != undefined && $scope.formData.price != undefined && $scope.formData.description != undefined) {
-			Foods.create($scope.formData).then(function ( data ) {
+			Foods.create($scope.formData).success(function ( data ) {
 			$scope.foods = data;
 			$scope.formData = {};
 		}).catch(function (err) {
@@ -27,9 +27,9 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 		});	
 	}
 	
-		Foods.get().success( function ( data ) {
-			$scope.foods = data;
-			})		
+		// Foods.get().success( function ( data ) {
+		// 	$scope.foods = data;
+		// 	})		
 	};
 
 		$scope.showFoodDetails = function ( food ) {
@@ -47,15 +47,17 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', 'usSpinnerService'
 				$scope.foods = data;
 				});
 			});
-			// Foods.get().success(function(data) {
-			// $scope.delOrder = data;
-			// })
 		}
-
 		$scope.addOrder = function ( food ) {
-			var id = food._id;
-			$scope.orderedFood = food;
+			var order = {
+				food: food, 
+				price: food.price
+			}
+			Foods.order(order).then(function (result) {
+			$scope.orderedFood = result.data;
 			console.log( $scope.orderedFood );
+
+		})
 
 		}
 

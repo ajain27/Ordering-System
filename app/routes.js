@@ -1,4 +1,5 @@
 var Food = require('./models/food');
+var Order = require('./models/order');
 
 function getFoods(res) {
     Food.find(function (err, foods) {
@@ -10,8 +11,47 @@ function getFoods(res) {
 
         res.json(foods); // return all foods in JSON format
     });
-}
-;
+};
+
+// function getOrders (res) {
+//     Order.find(function (err, orders) {
+//          if (err) {
+//             res.send(err);
+//         }
+//         var food_ids = orders.map(function (order) {
+//             return order.food_id;
+//         });
+//         Food.find({
+//             _id: { $in:food_ids }
+//         }, function (err, foods) {
+//             console.log('Error->', err);
+//             var indexedFoods = foods.reduce(function (hash, food) {
+//                 hash[food._id.toString()] = food;
+//                 return hash;
+//             }, {});
+//             console.log('indexedFoods->', indexedFoods);
+//             var orderedFood = orders.map(function (order) {
+//                 console.log('Food->', indexedFoods[order.food_id]);
+//                 return {
+//                     _id:order._id,
+//                     price:order.price,
+//                     food: indexedFoods[order.food_id]
+//                 };
+//             });
+//             console.log('OrderedFood->', orderedFood);
+//             res.json(orderedFood);
+//         });
+//     });
+// };
+function getOrders(res) {
+    Order.find().populate('food').exec(function (err, orders) {
+
+        if (err) {
+            res.send(err);
+        }
+        res.json(orders); // return all orders in JSON format
+    });
+};
 
 module.exports = function (app) {
 
@@ -38,6 +78,23 @@ module.exports = function (app) {
 
             // get and return all the foods after you create another
             getFoods(res);
+        });
+
+    });
+
+        app.post('/api/order', function (req, res) {
+
+        // create an order, information comes from AJAX request from Angular
+        Order.create({
+            food: req.body.food._id,
+            price: req.body.price
+        }, function (err, food) {
+            console.log(err);
+            if (err)
+                res.send(err);
+
+            // get and return all the foods after you create another
+            getOrders(res);
         });
 
     });
