@@ -28,5 +28,3 @@ Each branch represents a certain tutorial.
 - tut6-organization: Coming Soon
 
 Happy Ordering ! :)
-=======
-# Ordering-System
