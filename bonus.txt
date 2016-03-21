@@ -1,0 +1,11 @@
+1. Owner can add items to the menu (POST REQUEST)
+
+2. Owner can Delete item from a menu (DELETE REQUEST)
+
+3. Getting all the menu items on page load (GET REQUEST)
+
+4. USER can serach food item 
+
+5. USER can view details of the food item and can order if he / she likes
+
+6.Total is also being calculated on the backend adding tax to the subtotal.
