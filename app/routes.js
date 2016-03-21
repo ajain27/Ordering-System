@@ -13,36 +13,6 @@ function getFoods(res) {
     });
 };
 
-// function getOrders (res) {
-//     Order.find(function (err, orders) {
-//          if (err) {
-//             res.send(err);
-//         }
-//         var food_ids = orders.map(function (order) {
-//             return order.food_id;
-//         });
-//         Food.find({
-//             _id: { $in:food_ids }
-//         }, function (err, foods) {
-//             console.log('Error->', err);
-//             var indexedFoods = foods.reduce(function (hash, food) {
-//                 hash[food._id.toString()] = food;
-//                 return hash;
-//             }, {});
-//             console.log('indexedFoods->', indexedFoods);
-//             var orderedFood = orders.map(function (order) {
-//                 console.log('Food->', indexedFoods[order.food_id]);
-//                 return {
-//                     _id:order._id,
-//                     price:order.price,
-//                     food: indexedFoods[order.food_id]
-//                 };
-//             });
-//             console.log('OrderedFood->', orderedFood);
-//             res.json(orderedFood);
-//         });
-//     });
-// };
 function getOrders(res) {
     Order.find().populate('food').exec(function (err, orders) {
 
