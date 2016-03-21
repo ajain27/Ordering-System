@@ -2,7 +2,7 @@ angular.module('foodService', [])
 
 	// super simple service
 	// each function returns a promise object 
-	.factory('Foods', ['$http', 'usSpinnerService',function($http, usSpinnerService) {
+	.factory('Foods', ['$http',function($http) {
 		return {
 			get : function() {
 				return $http.get('/api/foods');

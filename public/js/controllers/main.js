@@ -23,7 +23,6 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', function ($scope, 
 
 		$scope.showFoodDetails = function ( food ) {
 			var id = food._id;
-			console.log(id);
 			$scope.yourFood = food;
 		}
 

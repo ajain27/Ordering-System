@@ -1,16 +1,19 @@
 html 					{ overflow-y:scroll; }
 body 					{ padding-top:50px; background: #F5F5F5 !important}
-#todo-list 				{ margin-bottom:30px; }
-#todo-form 	 			{ margin-bottom:50px; }
+
+
+.navMargin {
+	 margin: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
 
 .items {
 	height:400px;
-	/*margin: 20px;*/
-	/*margin-left: 50px;*/
 }
 
 .orderItems {
-	height: 400px;
+	min-height: 400px;
 }
 .hand {
 	cursor: pointer
@@ -27,6 +30,8 @@ body 					{ padding-top:50px; background: #F5F5F5 !important}
 	border-radius: 2px;
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 	background: #F5F5F5;
+	font-style: italic;
+	line-height: 2em;
 
 }
 .addFood {
