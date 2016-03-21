@@ -32,7 +32,13 @@ function getOrderTotal(res) {
             total += order.price + (0.075 * order.price);
             return total;
         }, 0);
-        res.json({total:total}); // return all orders in JSON format
+
+        var subtotal = orders.reduce(function (subtotal, order) {
+            subtotal += order.price 
+            return subtotal;
+        }, 0);        
+
+        res.json({total:total, subtotal:subtotal}); // return all orders in JSON format
     });
 }
 

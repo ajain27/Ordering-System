@@ -76,9 +76,11 @@
 						<td style="text-align: right">{{order.price | currency}}</td>
 					</table><hr ng-show="yourFood">
 					<table class="table table-striped" ng-show="orderedFood">
-					<tr ng-show="orderedFood"><td>Tax</td><td style="text-align: right">7.5%</td></tr>
+						<tr ng-show="orderedFood"><td><strong>Sub Total</strong></td><td style="text-align: right"><strong>{{subtotal | currency}}</strong></td></tr>
+					<tr ng-show="orderedFood"><td><strong>Tax</strong></td><td style="text-align: right"><strong>7.5%</strong></td></tr>
 						<tr ng-show="orderedFood"><td><strong>Your Total</strong></td><td style="text-align: right"><strong>{{total | currency}}</strong></td></tr>
-					</table>	
+					</table>
+					<button class="btn btn-default pull-right" ng-show="orderedFood" style="width: 200px; margin: 10px;">Pay</button>
 				</div>
 		</div>
 		</div>
