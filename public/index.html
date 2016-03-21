@@ -68,8 +68,6 @@
 				   <td class="food-details">{{ yourFood.description }}</td>					
 				</tr>
 			</table>
-			<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
-			<!-- <span us-spinner spinner-key="spinner-1"></span>						 -->
 				<button class="btn btn-default pull-right order" ng-show="yourFood" ng-click="addOrder(yourFood)">Order</button>
 			</div>
 			<div class="col-md-4 panel panel-default pull-right orderItems" style="border:none" ng-cloak>
@@ -77,8 +75,7 @@
 					<table class="table table-striped">
 						<tr data-ng-repeat="order in orderedFood"><td>{{order.food.name}}</td>
 						<td style="text-align: right">{{order.price | currency}}</td>
-						<!-- <td class="glyphicon glyphicon-remove addItem hand" ng-click="deleteOrder(order.food._id)"></td></tr> -->
-					</table><hr>
+					</table><hr ng-show="yourFood">
 					<table class="table table-striped" ng-show="orderedFood">
 					<tr ng-show="orderedFood"><td>Tax</td><td style="text-align: right">7.5%</td></tr>
 						<tr ng-show="orderedFood"><td><strong>Your Total</strong></td><td style="text-align: right"><strong>{{total | currency}}</strong></td></tr>
