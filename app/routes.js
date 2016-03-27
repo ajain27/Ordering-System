@@ -38,7 +38,7 @@ function getOrderTotal(res) {
             return subtotal;
         }, 0);        
 
-        res.json({total:total, subtotal:subtotal}); // return all orders in JSON format
+        res.json({total:total, subtotal:subtotal}); // return total and subtotal object
     });
 }
 

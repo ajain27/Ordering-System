@@ -22,7 +22,7 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', function ($scope, 
 };
 
 		$scope.showFoodDetails = function ( food ) {
-			var id = food._id;
+			// var id = food._id;
 			$scope.yourFood = food;
 		}
 
@@ -34,6 +34,7 @@ fooditems.controller('FoodData', ['$scope', '$http', 'Foods', function ($scope, 
 				});
 			});
 		}
+		
 		$scope.addOrder = function ( food ) {
 			var order = {
 				food: food, 

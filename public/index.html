@@ -61,12 +61,15 @@
 				</table>
 			</div>
 			<div class="col-md-4 panel panel-default" style="height: 400px; border:none" ng-cloak>
-			<table>
+
+			<your-food ng-show="yourFood"></your-food>
+
+<!-- 			<table>
 				<tr><h3 ng-show="yourFood" style="color: #428bca; text-align: center">{{yourFood.name}}</h3></tr>
 				   <tr><td colspan="2"></td>
 				   <td class="food-details">{{ yourFood.description }}</td>					
 				</tr>
-			</table>
+			</table> -->
 				<button class="btn btn-default pull-right order" ng-show="yourFood" ng-click="addOrder(yourFood)">Order</button>
 			</div>
 			<div class="col-md-4 panel panel-default pull-right orderItems" style="border:none" ng-cloak>
@@ -83,17 +86,20 @@
 					<button class="btn btn-default pull-right" ng-show="orderedFood" style="width: 200px; margin: 10px;">Pay</button>
 				</div>
 		</div>
-		</div>
+	</div>
 		</div>
 		<div class="text-center text-muted">
 			<p>A demo by <a href="http://github.com/ajain27">Ankit</a></p>
 		</div>
+
+
 
 </body>	
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="js/services/foods.js"></script> <!-- load our food service -->
+	<script src="js/directives/food.js"></script> <!-- load our food service -->
 	<script src="js/core.js"></script> <!-- load our main application -->
 	<script src="js/spinner/spin.js"></script>
 	<script src="js/spinner/spinner.js"></script>

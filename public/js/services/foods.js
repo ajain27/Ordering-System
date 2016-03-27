@@ -18,6 +18,9 @@ angular.module('foodService', [])
 			},
 			order : function(order) {
 				return $http.post('/api/order', order);
-			}
+			},
+			deleteOrder : function(order) {
+				return $http.delete('/api/order' + order_id);
+			}			
 		}
 	}]);

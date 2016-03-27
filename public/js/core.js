@@ -1,1 +1,1 @@
-angular.module('FoodOrder', ['foodController', 'foodService', 'angularSpinner']);
+angular.module('FoodOrder', ['foodController', 'foodService', 'foodDirective',  'angularSpinner']);
