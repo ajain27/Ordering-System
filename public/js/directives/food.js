@@ -5,4 +5,4 @@ angular.module('foodDirective', [])
 		restrict: 'E', 
 		templateUrl:'yourFood.html', 
 	};
-})
+});
